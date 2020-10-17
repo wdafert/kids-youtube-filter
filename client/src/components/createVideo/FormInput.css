@@ -1,0 +1,9 @@
+.sliders {
+   display: flex;
+   flex-direction: row;
+}
+
+.radioLang {
+   display: flex;
+   flex-direction: column;
+}

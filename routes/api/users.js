@@ -1,5 +1,4 @@
 const router = require('express').Router();
-let user = require('../../models/user.model');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const gravatar = require('gravatar');
@@ -9,8 +8,8 @@ const config = require('config');
 const User = require ('../../models/user.model')
 
 // @route   POST api/users
-// desc     Register user
-// access   Public
+// @desc     Register user
+// @access   Public
 
 router.post(
     '/',

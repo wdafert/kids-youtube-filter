@@ -1,0 +1,8 @@
+input[type='radio'] {
+    transform: scale(2);
+    margin: 20px;;
+}
+
+.form {
+    font: 2em sans-serif;
+}

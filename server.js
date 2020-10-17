@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
-
+const cors = require('cors');
 
 // express server
 const app = express();
@@ -8,8 +8,8 @@ const port = process.env.PORT || 5000;  // for deploymnet .. in case 5000 is bus
 
 
 // middleware
-app.use(express.json({extended: false}));   //parse json
-// app.use(cors());            //cross origin fix
+app.use(express.json({ extended: false }));   //parse json
+app.use(cors());            //cross origin fix
 
 // connect to DB
 

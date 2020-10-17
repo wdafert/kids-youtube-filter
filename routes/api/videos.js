@@ -1,29 +1,29 @@
 const router = require('express').Router();
 let Video = require('../../models/video.model');
 
-// get all Videos
-router.route('/').get((req, res) => {
+
+router.get('/', (req, res) => {
     Video.find()
         .then(videos => res.json(videos))
         .catch(err => res.status(400).json('Error: ' + err));
 })
 
 // get 1 Video by id
-router.route('/:id').get((req, res) => {
+router.get('/:id', (req, res) => {
     Video.findById(req.params.id)
         .then(video => res.json(video))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // delete 1 Video by id
-router.route('/:id').delete((req, res) => {
+router.delete('/:id', (req, res) => {
     Video.findByIdAndDelete(req.params.id)
-        .then(video => res.json('Exercise deleted.'))
+        .then(video => res.json('Video deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // update 1 Video by id
-router.route('/update/:id').post((req, res) => {
+router.post('/update/:id', (req, res) => {
     Video.findById(req.params.id)
         .then(video => {
             video.ad = req.body.ad;
@@ -43,7 +43,7 @@ router.route('/update/:id').post((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.route('/add').post((req, res) => {
+router.post('/add', (req, res) => {
     const ad = req.body.ad;
     const age = req.body.age;
     const lang = req.body.lang;
