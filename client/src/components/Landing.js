@@ -1,21 +1,48 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
-const Landing = () => {
+const Landing = ({isAuthenticated}) => {
+    if (isAuthenticated) {
+      return  <Redirect to = '/dashboard' />
+    }
+
     return (
-        <div>
-            Landing Page 
-             
-            <Button className= "btn btn-primary" >
-                <Link to="/login" id="login-button" >Login</Link>
-            </Button> 
-            <Button className="btn btn-primary">
-                <Link to="/register" id="login-button" >Register</Link>
-            </Button> 
-            
-        </div>
+        <section className="landing">
+            <div className="dark-overlay">
+                <div className="landing-inner">
+                    <h1 className="x-large">Youtube Kids Plus</h1>
+                    <p className="lead">
+                        100% human reviewed Kids Videos with filters for <br/>
+                        - language<br />
+                        - strictly <br />
+                        - no violence <br />
+                        - no unboxing, ...
+          </p>
+                    <div className="buttons">
+                        <a  className="btn btn-primary">
+                            <Link to="/register" id="login-button" >
+                                Register
+                            </Link></a>
+                        <a  className="btn btn-light">
+                            <Link to="/login" id="login-button" >
+                                Login
+                                </Link>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
     )
 }
 
-export default Landing
+Landing.propTypes = {
+    isAuthenticated: PropTypes.bool,
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+})
+
+export default connect(mapStateToProps)(Landing);

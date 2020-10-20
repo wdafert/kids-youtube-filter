@@ -1,42 +1,30 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+import { login } from '../../actions/auth'
 
-export const Login = () => {
-
+const Login = ({ login, isAuthenticated }) => {
 
     const [formData, setFormData] = useState({
         email: '',
         password: ''
-       
+
     });
 
-    const { email, password} = formData;
+    const { email, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = async e => {
-        e.preventDefault();      
-            console.log(formData);
-            const newUser = {
-                email,
-                password
-            }
-            try {
-                const config = {   //header 
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-                const body = JSON.stringify(newUser);
-                const res = await axios.post('/api/auth', body, config) //proxy with base URL added in package.json
-                console.log(res.data);
-                alert('User Logged In')
-            } catch (err) {
-                console.log(err.response.data);
-                console.log(err.response.data.msg);
-            }
-        
+        e.preventDefault();
+        console.log(formData);
+        login(email, password);
+    };
+
+    // Redirect if logged in
+    if (isAuthenticated) {
+        return <Redirect to="/dashboard" />  // TODO
     }
 
     return (
@@ -65,3 +53,14 @@ export const Login = () => {
         </Fragment >
     )
 }
+
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated:state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(Login);

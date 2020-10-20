@@ -1,9 +1,12 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link ,Redirect} from 'react-router-dom';
+import { connect } from 'react-redux'
+import { setAlert } from '../../actions/alert'; //redux action
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types'
 
-export const Register = () => {
 
+const Register = ({ setAlert, register,isAuthenticated }) => {    // props come from the redux store
 
     const [formData, setFormData] = useState({
         name: '',
@@ -19,35 +22,20 @@ export const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== password2) {
-            console.log('Passwords do not match');
-            alert('Passwords do not match');
+            setAlert('Passwords do not match', 'danger');  // pass this as a message to our actions(alert.js), generate id and dispatch 
         } else {
-            console.log(formData);
-            const newUser = {
-                name,
-                email,
-                password
-            }
-            try {
-                const config = {   //header 
-                    headers: {
-                        'Content-Type':'application/json'
-                    }
-                }
-                const body = JSON.stringify(newUser);
-                const res = await axios.post('/api/users', body, config) //proxy with base URL added in package.json
-                console.log(res.data);
-                alert('User Registered')
-            } catch (err) {
-                console.log(err.response.data);
-            }
+            console.log('SUCCESS');           
+            register({ name, email, password })
         }
+    }
+    if (isAuthenticated) {
+        return <Redirect to = '/dashboard' />  //TODO change later
     }
 
     return (
         <Fragment>
             <h1 className="large text-primary">Sign Up</h1>
-            <form className="form" onSubmit={e=>onSubmit(e)}>
+            <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <input type="text" placeholder="Name"
                         value={name}
@@ -85,3 +73,17 @@ export const Register = () => {
         </Fragment >
     )
 }
+
+Register.prototype = {
+    setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+}
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
+  //Redux connect takes in state that we want to map (here null) second is the object with actions
+// the setAlert in connect allows us to access props in the function Register(props) on top!
