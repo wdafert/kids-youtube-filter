@@ -21,11 +21,11 @@ const Landing = ({isAuthenticated}) => {
                         - no unboxing, ...
           </p>
                     <div className="buttons">
-                        <a  className="btn btn-primary">
+                        <a href='#!' className="btn btn-primary">
                             <Link to="/register" id="login-button" >
                                 Register
                             </Link></a>
-                        <a  className="btn btn-light">
+                        <a href='#!' className="btn btn-light">
                             <Link to="/login" id="login-button" >
                                 Login
                                 </Link>

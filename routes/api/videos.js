@@ -1,7 +1,24 @@
 const router = require('express').Router();
 let Video = require('../../models/video.model');
 
+// path / data ?: id ?: name')
 
+// req.query.id
+// req.query.name
+
+// get all ENG Videos
+router.get('/query/:lang&:age&:viol&:ad', (req, res) => {
+    Video.find({
+        lang: { $in: req.params.lang },
+        age: { $lte: req.params.age },
+        viol: { $lte: req.params.viol },
+        ad: { $lte: req.params.ad }
+    })
+        .then(videos => res.json(videos))
+        .catch(err => res.status(400).json('Error: ' + err));
+})
+
+// get all Videos
 router.get('/', (req, res) => {
     Video.find()
         .then(videos => res.json(videos))

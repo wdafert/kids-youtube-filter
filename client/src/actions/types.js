@@ -1,3 +1,5 @@
+//outsourcing of actions: helps to avoid misspelling
+
 // alert
 export const SET_ALERT = 'SET_ALERT';
 export const REMOVE_ALERT = 'REMOVE_ALERT';
@@ -17,7 +19,16 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 // logout
 export const LOGOUT = 'LOGOUT';
 
-//profile
+// profile
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE = 'CLEAR_PROFILE';
+
+// kids Mode
+
+export const KIDS_MODE_ON = 'KIDS_MODE_ON';
+export const KIDS_MODE_OFF = 'KIDS_MODE_OFF';
+
+// videos
+export const GET_VIDEOS = 'GET_VIDEOS';
+export const VIDEO_ERROR = 'VIDEO_ERROR';

@@ -49,9 +49,9 @@ export function VerticalSlider(props) {
         <React.Fragment>
             <Typography id="vertical-slider" gutterBottom>
                 {props.tag}
-        </Typography>
+            </Typography>
             <div className={classes.root}>
-                <Slider 
+                <Slider
                     orientation="vertical"
                     defaultValue={0}
                     aria-labelledby="vertical-slider"
@@ -76,77 +76,71 @@ class FormInput extends React.Component {
     onValueChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
-            
+
         });
     }
 
     onSliderAdChange = (param) => {
         this.setState({
-            Ad:param.value
+            Ad: param.value
 
         });
     }
 
     onFormSubmit = (event) => {
         event.preventDefault();
-        console.log(this.myRef.current);
+        // console.log(this.myRef.current);
         this.props.onSubmit(this.state);
-        
-    } 
-    
+
+    }
+
     render() {
         return (
             <div>
                 <form className="form" onSubmit={this.onFormSubmit}>
-                    {/* Sliders */}
-                    <div className="sliders">
-                        
-                        <VerticalSlider tag="Ads" />                 
-                        <VerticalSlider tag="Age" />                 
-                        <VerticalSlider tag="Violence" /> 
-                    <VerticalSlider tag="Language" />
-                        <div>
-                        
-                            <div className="radio">
-                                <label>
-                                    <input type="radio"
-                                        value="ENG"
-                                        checked={this.state.Lang === 'ENG'}
-                                        onChange={this.onValueChange}
-                                        name="Lang"
-                                    />
+                    {/* Language */}
+
+
+                    <div className="radio">
+                        <label>
+                            <input type="radio"
+                                value="ENG"
+                                checked={this.state.Lang === 'ENG'}
+                                onChange={this.onValueChange}
+                                name="Lang"
+                            />
 
                                 ENG
                             </label>
-                            </div>
-                            <div className="radio">
-                                <label>
-                                    <input type="radio"
-                                        value="GER"
-                                        checked={this.state.Lang === 'GER'}
-                                        onChange={this.onValueChange}
-                                        name="Lang"
-                                    />
+                    </div>
+
+                    <div className="radio">
+                        <label>
+                            <input type="radio"
+                                value="GER"
+                                checked={this.state.Lang === 'GER'}
+                                onChange={this.onValueChange}
+                                name="Lang"
+                            />
                                 GER
                             </label>
-                            </div>
-                            <div className="radio">
-                                <label>
-                                    <input type="radio"
-                                        value="other"
-                                        checked={this.state.Lang === 'other'}
-                                        onChange={this.onValueChange}
-                                        name="Lang"
-                                    />
+                    </div>
+                    <div className="radio">
+                        <label>
+                            <input type="radio"
+                                value="other"
+                                checked={this.state.Lang === 'other'}
+                                onChange={this.onValueChange}
+                                name="Lang"
+                            />
                                 other
                             </label>
-                            </div>   
-                        </div>
                     </div>
+
                     <br></br>
                     {/* Age Group */}
                     <div className="Age">
-                        Age Group
+                        Age
                         <div className="radio">
                             <label>
                                 <input type="radio"
@@ -181,8 +175,104 @@ class FormInput extends React.Component {
                             </label>
                         </div>
                     </div>
-                   
-                    
+                    {/* Viol Group */}
+                    <div className="Violence">
+                        Violence
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="1"
+                                    checked={this.state.Viol === '0'}
+                                    onChange={this.onValueChange}
+                                    name="Viol"
+                                />
+                                0
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="2"
+                                    checked={this.state.Viol === '1'}
+                                    onChange={this.onValueChange}
+                                    name="Viol"
+                                />
+                                1
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="3"
+                                    checked={this.state.Viol === '2'}
+                                    onChange={this.onValueChange}
+                                    name="Viol"
+                                />
+                                2
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="3"
+                                    checked={this.state.Viol === '3'}
+                                    onChange={this.onValueChange}
+                                    name="Viol"
+                                />
+                                3
+                            </label>
+                        </div>
+                    </div>
+
+                    {/* Ad Group */}
+                    <div className="Ad">
+                        Advertising
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="1"
+                                    checked={this.state.Ad === '0'}
+                                    onChange={this.onValueChange}
+                                    name="Ad"
+                                />
+                                0
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="2"
+                                    checked={this.state.Ad === '1'}
+                                    onChange={this.onValueChange}
+                                    name="Ad"
+                                />
+                                1
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="3"
+                                    checked={this.state.Ad === '2'}
+                                    onChange={this.onValueChange}
+                                    name="Ad"
+                                />
+                                2
+                            </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="3"
+                                    checked={this.state.Ad === '3'}
+                                    onChange={this.onValueChange}
+                                    name="Ad"
+                                />
+                                3
+                            </label>
+                        </div>
+                    </div>
+
                     {/* Submit Button */}
                     <button className="btn btn-default" type="submit">
                         Submit all input

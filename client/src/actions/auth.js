@@ -10,17 +10,30 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    CLEAR_PROFILE
+    CLEAR_PROFILE,
+    KIDS_MODE_ON,
+    KIDS_MODE_OFF
 } from './types';
+
+// Kids Mode on
+export const kidsModeOn = () => dispatch => {
+    dispatch({ type: KIDS_MODE_ON });
+}
+
+// Kids Mode on
+export const kidsModeOff = () => dispatch => {
+    dispatch({ type: KIDS_MODE_OFF });
+}
 
 // Load User
 export const loadUser = () => async dispatch => {
+    //if there is a token stored locally then ..
     if (localStorage.token) {
-        setAuthToken(localStorage.token)
+        setAuthToken(localStorage.token)   // add token to header
     }
     try {
-        const res = await axios.get('/api/auth'); // here we get error
-        dispatch({
+        const res = await axios.get('/api/auth');
+        dispatch({                      // saves result of user in storage+set isAuthenticated TRUE and loading FALSE
             type: USER_LOADED,
             payload: res.data
         })
@@ -62,7 +75,7 @@ export const register = ({ name, email, password }) => async dispatch => {
 
 // Login User
 
-export const login = (email, password ) => async dispatch => {
+export const login = (email, password) => async dispatch => {
     const config = {
         headers: {
             'Content-Type': 'application/json'

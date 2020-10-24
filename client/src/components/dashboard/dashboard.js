@@ -1,8 +1,10 @@
-import React, {Fragment, useEffect} from 'react'
+import React, { Fragment, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import {getCurrentProfile} from '../../actions/profile'
+import { getCurrentProfile } from '../../actions/profile'
 import Spinner from '../layout/spinner';
+import { kidsModeOff } from '../../actions/auth'
 
 // @Access: Parent only
 // loads profile from logged in user
@@ -10,10 +12,11 @@ import Spinner from '../layout/spinner';
 // if has already then show filter values
 // later maybe also show favorite movies
 
-const Dashboard = ({getCurrentProfile,auth:{user},profile:{profile,loading}}) => {
+const Dashboard = ({ getCurrentProfile, auth: { user }, kidsModeOff, profile: { profile, loading } }) => {
     useEffect(() => {
-        getCurrentProfile()
-    }, []);
+        getCurrentProfile();
+        kidsModeOff();
+    }, []); // only update the first time
 
     return loading && profile === null ?
         <Spinner /> : <Fragment>
@@ -21,17 +24,32 @@ const Dashboard = ({getCurrentProfile,auth:{user},profile:{profile,loading}}) =>
                 Dashboard
             </h1>
             <p className="lead">
-            <i className="fas fa-user"></i> Welcome {user&& user.name}
+                <i className="fas fa-user"></i> Welcome back {user && user.name}
             </p>
-            {profile !==null ? <Fragment>has profile</Fragment> : <Fragment>You have not yet setup your filter.</Fragment>}
+            {profile !== null ?
+                <Fragment>
+                    You already have filters setup
+                    <Fragment>
+                        <Link to='/edit-profile' className="btn btn-primary my-1">
+                            Edit Filters
+                   </Link>
+                    </Fragment>
+                </Fragment> :
+                <Fragment>
+                    You have not yet setup your filter.
+                    <Link to='/create-profile' className="btn btn-primary my-1">
+                        Set up Filters
+                    </Link>
+                </Fragment>}
         </Fragment>
-  
+
 }
 
 Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired,
+    kidsModeOff: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -39,4 +57,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, {getCurrentProfile})(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, kidsModeOff })(Dashboard);
