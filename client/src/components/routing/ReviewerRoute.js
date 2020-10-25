@@ -13,7 +13,7 @@ const ReviewerRoute = ({
         <Route
             {...rest}
             render={props =>
-                profile.subscription !== 'Reviewer' && !loading ? (
+                profile && profile.subscription !== 'Reviewer' && !loading ? (
                     < Redirect to='/login' />
                 ) : (
                         <Component {...props} />

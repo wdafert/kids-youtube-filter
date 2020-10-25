@@ -43,8 +43,7 @@ const CreateProfile = ({ profile: { profile, loading }, kidsModeOff, createProfi
         filterLang,
         filterAd,
         filterViol,
-        filterMaxViewTime,
-        date
+        filterMaxViewTime
     } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -94,7 +93,7 @@ const CreateProfile = ({ profile: { profile, loading }, kidsModeOff, createProfi
                     <select name="filterLang" value={filterLang} onChange={e => onChange(e)}>
                         <option value="0">Language</option>
                         <option value="ENG">English</option>
-                        <option value="Ger">German</option>
+                        <option value="GER">German</option>
                     </select>
                     <small className="form-text"
                     >Each video is manually categorized by us with the language spoken.</small

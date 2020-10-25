@@ -3,18 +3,18 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
-const Landing = ({isAuthenticated}) => {
+const Landing = ({ isAuthenticated }) => {
     if (isAuthenticated) {
-      return  <Redirect to = '/dashboard' />
+        return <Redirect to='/dashboard' />
     }
 
     return (
         <section className="landing">
             <div className="dark-overlay">
                 <div className="landing-inner">
-                    <h1 className="x-large">Youtube Kids Plus</h1>
+                    <h1 className="x-large">wolfi KIDVID </h1>
                     <p className="lead">
-                        100% human reviewed Kids Videos with filters for <br/>
+                        100% human reviewed Kids Videos with filters for <br />
                         - language<br />
                         - strictly <br />
                         - no violence <br />

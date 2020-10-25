@@ -18,7 +18,7 @@ const NavbarLanding = ({ auth: { isAuthenticated, kidsMode, loading }, profile: 
                 </Link>
             </li>
             <li>
-                <Link to="/kids" >Change to Kids Mode</Link>
+                <Link to="/kids" >Videos/Kids Mode</Link>
             </li>
             <li>
                 <a onClick={logout} href='#!'>

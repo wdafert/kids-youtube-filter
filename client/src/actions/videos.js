@@ -3,14 +3,14 @@ import { setAlert } from './alert'
 
 import {
     GET_VIDEOS,
-    VIDEO_ERROR,
-    GET_PROFILE
+    VIDEO_ERROR
+
 } from './types'
 
 
 export const getVideos = (stringForVideoQuery) => async dispatch => {   // short for ... function that returns a fuction
     const totalString = '/api/videos' + stringForVideoQuery;
-
+    // example query string 
     try {
         const res = await axios.get(totalString);
         // const res = await axios.get('/api/videos/'); 
@@ -20,7 +20,8 @@ export const getVideos = (stringForVideoQuery) => async dispatch => {   // short
             payload: res.data
         })
     } catch (err) {
-        const errors = err.response.data.errors;
+        console.log('Error XX', err);
+        const errors = [];//err.response.data.errors;
         if (errors) {
             errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
         }

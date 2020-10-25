@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import './FormInput.css';
+import { Container } from 'react-bootstrap';
 
 const useStyles = makeStyles({
     root: {
@@ -70,76 +71,72 @@ class FormInput extends React.Component {
         Lang: null,
         Age: null,
         Viol: null,
-        Ad: null
+        Ad: null,
+        selectedVideo: this.props.thisVideo
     };
 
     onValueChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
-
         });
     }
 
-    onSliderAdChange = (param) => {
-        this.setState({
-            Ad: param.value
-
-        });
-    }
 
     onFormSubmit = (event) => {
         event.preventDefault();
         // console.log(this.myRef.current);
+        // this.setState({
+        //     selectedVideo: this.props.thisVideo
+        // })
+        console.log("Selected Video: ", this.state.selectedVideo);
         this.props.onSubmit(this.state);
-
     }
 
     render() {
         return (
-            <div>
+            <Container>
                 <form className="form" onSubmit={this.onFormSubmit}>
                     {/* Language */}
+                    <div className="Language radio-group">
+                        Lang
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="ENG"
+                                    checked={this.state.Lang === 'ENG'}
+                                    onChange={this.onValueChange}
+                                    name="Lang"
+                                />
 
-
-                    <div className="radio">
-                        <label>
-                            <input type="radio"
-                                value="ENG"
-                                checked={this.state.Lang === 'ENG'}
-                                onChange={this.onValueChange}
-                                name="Lang"
-                            />
-
-                                ENG
-                            </label>
+                                    ENG
+                                </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="GER"
+                                    checked={this.state.Lang === 'GER'}
+                                    onChange={this.onValueChange}
+                                    name="Lang"
+                                />
+                                    GER
+                                </label>
+                        </div>
+                        <div className="radio">
+                            <label>
+                                <input type="radio"
+                                    value="other"
+                                    checked={this.state.Lang === 'other'}
+                                    onChange={this.onValueChange}
+                                    name="Lang"
+                                />
+                                    other
+                                </label>
+                        </div>
                     </div>
 
-                    <div className="radio">
-                        <label>
-                            <input type="radio"
-                                value="GER"
-                                checked={this.state.Lang === 'GER'}
-                                onChange={this.onValueChange}
-                                name="Lang"
-                            />
-                                GER
-                            </label>
-                    </div>
-                    <div className="radio">
-                        <label>
-                            <input type="radio"
-                                value="other"
-                                checked={this.state.Lang === 'other'}
-                                onChange={this.onValueChange}
-                                name="Lang"
-                            />
-                                other
-                            </label>
-                    </div>
-
-                    <br></br>
                     {/* Age Group */}
-                    <div className="Age">
+                    <div className="Age radio-group">
                         Age
                         <div className="radio">
                             <label>
@@ -176,12 +173,12 @@ class FormInput extends React.Component {
                         </div>
                     </div>
                     {/* Viol Group */}
-                    <div className="Violence">
+                    <div className="Violence radio-group">
                         Violence
                         <div className="radio">
                             <label>
                                 <input type="radio"
-                                    value="1"
+                                    value="0"
                                     checked={this.state.Viol === '0'}
                                     onChange={this.onValueChange}
                                     name="Viol"
@@ -192,7 +189,7 @@ class FormInput extends React.Component {
                         <div className="radio">
                             <label>
                                 <input type="radio"
-                                    value="2"
+                                    value="1"
                                     checked={this.state.Viol === '1'}
                                     onChange={this.onValueChange}
                                     name="Viol"
@@ -203,7 +200,7 @@ class FormInput extends React.Component {
                         <div className="radio">
                             <label>
                                 <input type="radio"
-                                    value="3"
+                                    value="2"
                                     checked={this.state.Viol === '2'}
                                     onChange={this.onValueChange}
                                     name="Viol"
@@ -225,12 +222,12 @@ class FormInput extends React.Component {
                     </div>
 
                     {/* Ad Group */}
-                    <div className="Ad">
+                    <div className="Ad radio-group">
                         Advertising
                         <div className="radio">
                             <label>
                                 <input type="radio"
-                                    value="1"
+                                    value="0"
                                     checked={this.state.Ad === '0'}
                                     onChange={this.onValueChange}
                                     name="Ad"
@@ -241,7 +238,7 @@ class FormInput extends React.Component {
                         <div className="radio">
                             <label>
                                 <input type="radio"
-                                    value="2"
+                                    value="1"
                                     checked={this.state.Ad === '1'}
                                     onChange={this.onValueChange}
                                     name="Ad"
@@ -252,7 +249,7 @@ class FormInput extends React.Component {
                         <div className="radio">
                             <label>
                                 <input type="radio"
-                                    value="3"
+                                    value="2"
                                     checked={this.state.Ad === '2'}
                                     onChange={this.onValueChange}
                                     name="Ad"
@@ -274,11 +271,11 @@ class FormInput extends React.Component {
                     </div>
 
                     {/* Submit Button */}
-                    <button className="btn btn-default" type="submit">
+                    <button className="ui primary button" type="submit">
                         Submit all input
                 </button>
                 </form>
-            </div>
+            </Container>
         );
     }
 }

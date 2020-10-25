@@ -13,7 +13,7 @@ const VideoSideList = ({ videos, onVideoSelect }) => {   // destructuring... ins
     })
 
     return (
-        <div className="video-list ui relaxed divided list">
+        <div className="">
             {renderedList}
         </div>
     );

@@ -1,13 +1,15 @@
 import React from 'react';
-import './VideoItem.css';
+import './KidsVideo.css';
+import { Image } from 'react-bootstrap';
 
-
-const VideoItem = ({ video}) => {
+const VideoItem = ({ video, onVideoSelect }) => {
     return (
-        <div className="video-item item">  
-            <img className="ui image thumbnail"
+        <div onClick={() => { onVideoSelect(video) }} className="video-item">
+            <Image className="my-auto"
                 src={video.thumbnail}
                 alt={video.thumbnail}
+                thumbnail
+                fluid
             />
             <div className="content">
                 <div className="header">{video.title}</div>

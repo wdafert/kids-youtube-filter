@@ -16,7 +16,7 @@ import EditVideo from './components/EditVideo';
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Alert from './components/layout/Alert';
-// import './App.css';
+
 import setAuthToken from './utils/setAuthToken'
 
 // Redux
@@ -24,7 +24,6 @@ import { Provider } from 'react-redux';  // connects the two
 import store from './store'
 
 import { loadUser } from './actions/auth'
-import { kidsModeOn } from './actions/auth'
 import { kidsModeOff } from './actions/auth'
 
 if (localStorage.token) {
@@ -56,7 +55,6 @@ const App = () => {
               <PrivateRoute exact path="/create-profile" component={CreateProfile} />
               <PrivateRoute exact path="/edit-profile" component={EditProfile} />
               <ReviewerRoute exact path="/create" component={CreateVideo} />
-              {/*<KidsRoute exact path="/kids" component={kidsVideo} /> */}
               <Route exact path="/kids" component={KidsVideo} />
             </Switch>
 
@@ -64,7 +62,6 @@ const App = () => {
           <Route path="/list" component={VideoList} />
           <Route path="/edit/:id" component={EditVideo} />
 
-          <Route path="/user" component={CreateUser} />
         </div>
       </Router>
     </Provider>

@@ -1,10 +1,6 @@
 const router = require('express').Router();
 let Video = require('../../models/video.model');
 
-// path / data ?: id ?: name')
-
-// req.query.id
-// req.query.name
 
 // get all ENG Videos
 router.get('/query/:lang&:age&:viol&:ad', (req, res) => {
@@ -18,12 +14,30 @@ router.get('/query/:lang&:age&:viol&:ad', (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 })
 
-// get all Videos
+// get all Videos  
 router.get('/', (req, res) => {
     Video.find()
         .then(videos => res.json(videos))
         .catch(err => res.status(400).json('Error: ' + err));
 })
+
+// get random 3 Videos  
+router.get('/rand/:lang&:age&:viol&:ad', (req, res) => {
+    Video.aggregate([
+        {
+            $match: {
+                lang: { $eq: req.params.lang },
+                age: { $lte: req.params.age },
+                viol: { $lte: req.params.viol },
+                ad: { $lte: req.params.ad }
+            }
+        },
+        { $sample: { size: 2 } }
+    ])
+        .then(videos => res.json(videos))
+        .catch(err => res.status(400).json('Error: ' + err));
+})
+
 
 // get 1 Video by id
 router.get('/:id', (req, res) => {

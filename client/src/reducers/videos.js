@@ -1,13 +1,4 @@
 import {
-    REGISTER_SUCCESS,
-    REGISTER_FAIL,
-    USER_LOADED,
-    AUTH_ERROR,
-    LOGIN_SUCCESS,
-    LOGIN_FAIL,
-    LOGOUT,
-    KIDS_MODE_ON,
-    KIDS_MODE_OFF,
     GET_VIDEOS,
     VIDEO_ERROR
 } from '../actions/types';

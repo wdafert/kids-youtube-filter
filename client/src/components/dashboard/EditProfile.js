@@ -44,8 +44,8 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
         filterLang,
         filterAd,
         filterViol,
-        filterMaxViewTime,
-        date
+        filterMaxViewTime
+
     } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -95,7 +95,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
                     <select name="filterLang" value={filterLang} onChange={e => onChange(e)}>
                         <option value="0">Language</option>
                         <option value="ENG">English</option>
-                        <option value="Ger">German</option>
+                        <option value="GER">German</option>
                     </select>
                     <small className="form-text"
                     >Each video is manually categorized by us with the language spoken.</small
@@ -141,7 +141,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
                     >
                 </div>
                 <input type="submit" className="btn btn-primary my-1" />
-                <a className="btn btn-light my-1" href="dashboard.html">Go Back</a>
+
             </form>
         </Fragment>
     )

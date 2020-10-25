@@ -3,9 +3,9 @@
    flex-direction: row;
 }
 
-.radioLang {
-   display: flex;
-   flex-direction: column;
+.radio-group {
+   float: left;
+   margin: 10px;
 }
 
 .form {

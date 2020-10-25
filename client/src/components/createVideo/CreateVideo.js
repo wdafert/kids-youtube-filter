@@ -6,6 +6,7 @@ import FormInput from './FormInput';
 import VideoSideList from './VideoSideList';
 import './CreateVideo.css'
 import axios from 'axios';
+import { Col, Row, Container } from 'react-bootstrap';
 
 export default class CreateVideo extends Component {
 
@@ -43,7 +44,6 @@ export default class CreateVideo extends Component {
                     description: response.data.items[0].snippet.description,
                     thumbnail: response.data.items[0].snippet.thumbnails.medium.url,
                     channelTitle: response.data.items[0].snippet.channelTitle,
-
                 }
             );
         } catch (error) {
@@ -52,10 +52,6 @@ export default class CreateVideo extends Component {
     }
 
     formSubmit = ({ Lang, Age, Viol, Ad }) => {
-        console.log("xx", Lang);
-        console.log("xx", Age);
-        console.log("xx", Viol);
-        console.log("xx", Ad);
         // TODO write to database
         const video = {
             videoId: this.state.videoId,
@@ -70,35 +66,47 @@ export default class CreateVideo extends Component {
             ad: Ad
         }
         console.log("Video", video);
-        console.log("state", this.state);
+        console.log("state", this.state.selectedVideo);
         axios.post('http://localhost:5000/api/videos/add', video)
             .then(res => alert(res.data));
-
     }
 
     onVideoSelect = (video) => {
         console.log('From the App!', video);
         // setState is asynchronous!!
-        this.setState({ selectedVideo: video });
-        // console.log("from video:", video.snippet.title);
+        this.setState({
+            selectedVideo: video,
+            videoId: video.id.videoId,
+            channelId: video.snippet.channelId,
+            title: video.snippet.title,
+            description: video.snippet.description,
+            thumbnail: video.snippet.thumbnails.medium.url,
+            channelTitle: video.snippet.channelTitle,
+        });
+        console.log("from video:", this.state.selectedVideo);
     }
 
     render() {
         return (
-            <div className="ui container" >
-                <SearchBar onFormSubmit={this.onTermSubmit} />
-                <div className="ui grid">
-                    <div className="ui row">
-                        <div className="eleven wide column">
-                            <VideoDetail video={this.state.selectedVideo} />
+            <Container fluid>
+                <Row>
+                    <SearchBar className="mt-5" onFormSubmit={this.onTermSubmit} />
+                    <Col sm={8}>
+                        <div className="" >
+
+                            <div className="">
+                                <VideoDetail video={this.state.selectedVideo} />
+                            </div>
+                            <FormInput thisVideo={this.state.selectedVideo} onSubmit={this.formSubmit} />
                         </div>
-                        <div className="five wide column">
+                    </Col>
+                    <Col sm={4}>
+                        <div className="">
                             <VideoSideList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
                         </div>
-                    </div>
-                </div>
-                <FormInput onSubmit={this.formSubmit} />
-            </div>
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
