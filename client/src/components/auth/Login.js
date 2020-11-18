@@ -47,7 +47,7 @@ const Login = ({ login, isAuthenticated }) => {
                         required />
                 </div>
                 
-                <input type="submit" className="btn btn-light" value='Login' />
+                <input type="submit" className="btn btn-light btn-outline-primary" value='Login' />
                 <br></br><br></br>
                 No account yet? <Link to="/register" className="my-1" id="login-button" >Register</Link>
             </form>

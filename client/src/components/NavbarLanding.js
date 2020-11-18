@@ -32,9 +32,7 @@ const NavbarLanding = ({ auth: { isAuthenticated, kidsMode, loading }, profile: 
 
     const guestLinks = (
         <ul>
-            <li>
-                <a href='#!'>FAQ</a>
-            </li>
+           
             <li>
                 <Link to="/register" >Register</Link>
             </li>

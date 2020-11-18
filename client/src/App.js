@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";  // remove later!!
 import NavbarLanding from "./components/NavbarLanding";
 import Landing from "./components/Landing"
 import VideoList from './components/ViewVideoList/VideoList';
+import Footer from './components/Footer';
 import CreateUser from './components/CreateUser';
 import CreateVideo from './components/createVideo/CreateVideo';
 import KidsVideo from './components/kidsVideos/KidsVideo';
@@ -11,8 +12,6 @@ import Dashboard from './components/dashboard/dashboard';
 import CreateProfile from './components/dashboard/CreateProfile';
 import EditProfile from './components/dashboard/EditProfile';
 import PrivateRoute from './components/routing/PrivateRoute';
-import ReviewerRoute from './components/routing/ReviewerRoute';
-import EditVideo from './components/EditVideo';
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Alert from './components/layout/Alert';
@@ -54,14 +53,14 @@ const App = () => {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/create-profile" component={CreateProfile} />
               <PrivateRoute exact path="/edit-profile" component={EditProfile} />
-              <ReviewerRoute exact path="/create" component={CreateVideo} />
-              <Route exact path="/kids" component={KidsVideo} />
+              <PrivateRoute exact path="/create" component={CreateVideo} />
+              <PrivateRoute exact path="/kids" component={KidsVideo} />
+              <PrivateRoute epath="/list" component={VideoList} />
             </Switch>
 
           </section>
-          <Route path="/list" component={VideoList} />
-          <Route path="/edit/:id" component={EditVideo} />
 
+        <Footer />
         </div>
       </Router>
     </Provider>

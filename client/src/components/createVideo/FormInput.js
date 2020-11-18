@@ -271,7 +271,7 @@ class FormInput extends React.Component {
                     </div>
 
                     {/* Submit Button */}
-                    <button className="btn btn-light" type="submit">
+                    <button className="btn btn-light btn-outline-primary" type="submit">
                         Submit all input
                 </button>
                 </form>

@@ -32,14 +32,14 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, kidsModeOff, profile: { 
                      <br></br>
                     <br></br>
                     <Fragment>
-                        <Link to='/edit-profile' className="btn btn-light">
+                        <Link to='/edit-profile' className="btn btn-light btn-outline-primary">
                             Edit Settings
                    </Link>
                     </Fragment>
                 </Fragment> :
                 <Fragment>
                     You have not yet setup your filter.
-                    <Link to='/create-profile' className="btn btn-primary my-1">
+                    <Link to='/create-profile' className="btn btn-primary my-1 btn-outline-primary">
                         Set up Filters
                     </Link>
                 </Fragment>}

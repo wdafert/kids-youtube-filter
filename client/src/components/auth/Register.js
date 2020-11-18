@@ -66,7 +66,7 @@ const Register = ({ setAlert, register,isAuthenticated }) => {    // props come 
                         minLength='6'  // must be same value like in server side checking
                         required />
                 </div >
-                <input type="submit" className="btn btn-light" value='Register' />
+                <input type="submit" className="btn btn-light btn-outline-primary" value='Register' />
                 <br></br>
                 <br></br>
                 Already have an account? <Link to="/login" className="my-1" id="login-button" >Login</Link>

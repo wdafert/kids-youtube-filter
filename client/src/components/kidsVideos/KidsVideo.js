@@ -66,7 +66,7 @@ const KidsVideo = ({ videos: { videos, loading }, auth: { auth, isAuthenticated,
             <Container className="m-2">
                 <VideoDetail video={selectedVideo} />
             </Container>
-            <button className="p-3 center btn btn-light" onClick={loadNewVideos}>
+            <button className="p-3 center btn btn-block btn-lg btn-light" onClick={loadNewVideos}>
                 Next Video
             </button>
             {/*    
