@@ -13,7 +13,7 @@ const NavbarLanding = ({ auth: { isAuthenticated, kidsMode, loading }, profile: 
                 <Link to="/edit-profile" >
                     <i className="fas fa-user"></i>{' '}
                     <span className='hide-sm'>
-                        Filter Settings
+                        Settings
                     </span>
                 </Link>
             </li>
@@ -48,18 +48,20 @@ const NavbarLanding = ({ auth: { isAuthenticated, kidsMode, loading }, profile: 
     const reviewerLinks = (
         <ul>
             <li>
-                <Link to="/edit-profile" >
-                    <i className="fas fa-user"></i>{' '}
+                <Link to="/edit-profile" >       
                     <span className='hide-sm'>
-                        Filter Settings
+                        Settings
                     </span>
                 </Link>
             </li>
             <li>
-                <Link to="/create" >Review Videos</Link>
+                <Link to="/create" >Review</Link>
             </li>
             <li>
-                <Link to="/kids" >Change to Kids Mode</Link>
+                <Link to="/list" >List</Link>
+            </li>
+            <li>
+                <Link to="/kids" >Kids Mode</Link>
             </li>
             <li>
                 <a onClick={logout} href='#!'>
@@ -72,9 +74,7 @@ const NavbarLanding = ({ auth: { isAuthenticated, kidsMode, loading }, profile: 
 
     const kidsLinks = (
         <ul>
-            <li>
-                <Link to="/kids" >Kids Videos</Link>
-            </li>
+          
             <li>
                 <Link to="/dashboard" >Parents Mode</Link>
             </li>
@@ -82,10 +82,10 @@ const NavbarLanding = ({ auth: { isAuthenticated, kidsMode, loading }, profile: 
     );
 
     return (
-        <div className="navbar bg-dark">
+        <div className="navbar">
             <h1>
                 <Link to='/'>
-                    Youtube Kids Filter
+                    KidsTube+
                 </Link></h1>
 
             {/* Parents view: is Authenticated && is !Reviewer &&!loading */}

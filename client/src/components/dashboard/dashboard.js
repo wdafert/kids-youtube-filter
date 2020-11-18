@@ -20,18 +20,20 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, kidsModeOff, profile: { 
 
     return loading && profile === null ?
         <Spinner /> : <Fragment>
-            <h1 className="large text-primary">
-                Dashboard
+            <h1 className="p-3 large text-primary">
+                Parent Settings
             </h1>
-            <p className="lead">
-                <i className="fas fa-user"></i> Welcome back {user && user.name}
+            <p className="">
+                Welcome back {user && user.name}!
             </p>
             {profile !== null ?
                 <Fragment>
-                    You already have filters setup
+                    You already have filters setup in Settings
+                     <br></br>
+                    <br></br>
                     <Fragment>
-                        <Link to='/edit-profile' className="btn btn-primary my-1">
-                            Edit Filters
+                        <Link to='/edit-profile' className="btn btn-light">
+                            Edit Settings
                    </Link>
                     </Fragment>
                 </Fragment> :

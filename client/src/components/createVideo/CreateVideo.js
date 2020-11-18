@@ -23,7 +23,7 @@ export default class CreateVideo extends Component {
     };
 
     componentDidMount() {
-        this.onTermSubmit('kinder video');
+        this.onTermSubmit('bagger video');
     }
 
     onTermSubmit = async (term) => {
@@ -36,7 +36,7 @@ export default class CreateVideo extends Component {
             );
             this.setState(
                 {
-                    videos: response.data.items,
+                    videos: response.data.items.slice(1, 5),
                     selectedVideo: response.data.items[0],
                     videoId: response.data.items[0].id.videoId,
                     channelId: response.data.items[0].snippet.channelId,
@@ -89,19 +89,24 @@ export default class CreateVideo extends Component {
     render() {
         return (
             <Container fluid>
+                <br></br>
                 <Row>
-                    <SearchBar className="mt-5" onFormSubmit={this.onTermSubmit} />
-                    <Col sm={8}>
-                        <div className="" >
-
+                    <div className="p-2" >
+                        <SearchBar className="" onFormSubmit={this.onTermSubmit} />
+                    </div>
+                </Row>
+                <Row>      
+                    <div className="p-3" >
                             <div className="">
                                 <VideoDetail video={this.state.selectedVideo} />
                             </div>
-                            <FormInput thisVideo={this.state.selectedVideo} onSubmit={this.formSubmit} />
+                        <br></br>    
+                        <FormInput thisVideo={this.state.selectedVideo} onSubmit={this.formSubmit} />
                         </div>
-                    </Col>
-                    <Col sm={4}>
-                        <div className="">
+                </Row>
+                <Row className= "justify-content-md-center">
+                    <Col >
+                        <div className="p-3">
                             <VideoSideList onVideoSelect={this.onVideoSelect} videos={this.state.videos} />
                         </div>
                     </Col>

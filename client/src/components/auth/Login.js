@@ -29,7 +29,7 @@ const Login = ({ login, isAuthenticated }) => {
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Log In</h1>
+            <h1 className="p-3 large text-primary">Login</h1>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <input type="text" placeholder="Email Adress"
@@ -46,9 +46,12 @@ const Login = ({ login, isAuthenticated }) => {
                         minLength='6' // must be same value like in server side checking
                         required />
                 </div>
-                <input type="submit" className="ui primary button" value='Login' />
+                
+                <input type="submit" className="btn btn-light" value='Login' />
+                <br></br><br></br>
+                No account yet? <Link to="/register" className="my-1" id="login-button" >Register</Link>
             </form>
-            No account yet? <Link to="/register" className="my-1" id="login-button" >Register</Link>
+            
 
         </Fragment >
     )
@@ -57,6 +60,7 @@ const Login = ({ login, isAuthenticated }) => {
 Login.propTypes = {
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool
+
 };
 
 // convention to call this mapState...
@@ -65,7 +69,7 @@ Login.propTypes = {
 // every time the state changes mapSt... will be updated!
 
 const mapStateToProps = state => ({
-    isAuthenticated:state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated
 });
 
 /* connects with the Provider and asks for access to login action
@@ -77,10 +81,10 @@ export default connect(mapStateToProps, { login })(Login);
 
 /* keep in mind... we import the login action in the top.
  but actually we DONT call this imported function directly!
- we first connect it with the Provider. Then the provider makes 
+ we first connect it with the Provider. Then the provider makes
 it accessible as a prop! and we actually call the prop.login (deconstructed here in the parameters)
  REASON: Redux does not automatically detect when an action is called!
-So we need to call the action with the DISPATCH. 
+So we need to call the action with the DISPATCH.
 This is automatically done by the connect (...{login})
 It wraps the function in to store.dispatch(login(name,email))
  */

@@ -13,7 +13,7 @@ const VideoList = ({ videos, onVideoSelect }) => {   // destructuring... instead
     console.log(videos);
 
     return (
-        <div className="my-auto">
+        <div className="p-3 my-auto">
             {renderedList}
         </div>
     );

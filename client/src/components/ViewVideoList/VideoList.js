@@ -21,7 +21,7 @@ export default class VideoList extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/videos')
+        axios.get('http://localhost:5000/api/videos')
             .then(response => {
                 this.setState({ videos: response.data })
             })
@@ -41,8 +41,8 @@ export default class VideoList extends Component {
 
     render() {
         return (
-            <div>
-                <h3>"Videos"</h3>
+            <div className="p-3 large text-primary">
+                <h1>All categorized Videos</h1>
                 <table className="table">
                     <thead className="thead-light">
                         <tr>

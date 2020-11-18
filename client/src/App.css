@@ -1,0 +1,133 @@
+/* Global Styles */
+:root {
+   --primary-color: #fa001a;
+   --dark-color: #3a5dd5;
+   --light-color: #ffcbcb;
+   --danger-color: #dc3545;
+   --success-color: #28a745;
+}
+
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+
+a {
+   color: var(--dark-color);
+   text-decoration: none;
+}
+
+body {
+   font-family: "Raleway", sans-serif;
+   font-size: 1.5rem;
+   line-height: 1.6;
+   background-color: #fff;
+   color: rgb(0, 0, 0);
+} /* Navbar */
+
+.btn-primary,
+.bg-primary,
+.badge-primary,
+.alert-primary {
+   background: var(--dark-color);
+   color: #fff;
+}
+
+.btn:hover {
+   opacity: 0.8;
+}
+
+.navbar {
+   background: var(--dark-color);
+   color: #fff;
+   font-size:1.2rem;
+   padding-top: 10px;
+    /* display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px var(--primary-color);
+  opacity: 0.9; */
+}
+
+
+
+.center {
+   margin: 0 auto;
+   display: block;
+}
+
+.navbar ul {
+   display: flex;
+}
+ul {
+   list-style: none;
+}
+
+.navbar a {
+   color: #fff;
+   padding: 0.45rem;
+   margin: 0.25rem;
+}
+
+.navbar a:hover {
+   color: var(--primary-color);
+}
+
+/* Padding */
+.p {
+   padding: 0.5rem;
+}
+.p-1 {
+   padding: 1rem;
+}
+.p-2 {
+   padding: 2rem;
+}
+.p-3 {
+   padding: 3rem;
+}
+.py {
+   padding: 0.5rem 0;
+}
+.py-1 {
+   padding: 1rem 0;
+}
+.py-2 {
+   padding: 2rem 0;
+}
+.py-3 {
+   padding: 3rem 0;
+}
+
+/* Margin */
+.m {
+   margin: 0.5rem;
+}
+.m-1 {
+   margin: 1rem;
+}
+.m-2 {
+   margin: 2rem;
+}
+.m-3 {
+   margin: 3rem;
+}
+.my {
+   margin: 0.5rem 0;
+}
+.my-1 {
+   margin: 1rem 0;
+}
+.my-2 {
+   margin: 2rem 0;
+}
+.my-3 {
+   margin: 3rem 0;
+}

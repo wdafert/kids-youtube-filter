@@ -16,7 +16,7 @@ import EditVideo from './components/EditVideo';
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Alert from './components/layout/Alert';
-
+import './App.css';
 import setAuthToken from './utils/setAuthToken'
 
 // Redux

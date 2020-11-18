@@ -32,7 +32,7 @@ router.get('/rand/:lang&:age&:viol&:ad', (req, res) => {
                 ad: { $lte: req.params.ad }
             }
         },
-        { $sample: { size: 2 } }
+        { $sample: { size: 3 } }
     ])
         .then(videos => res.json(videos))
         .catch(err => res.status(400).json('Error: ' + err));

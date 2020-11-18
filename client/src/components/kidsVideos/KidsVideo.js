@@ -6,11 +6,11 @@ import { Container } from 'react-bootstrap';
 import { kidsModeOn } from '../../actions/auth'
 import { logout } from '../../actions/auth'
 import { getVideos } from '../../actions/videos'
-
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 import './KidsVideo.css';
 
+let stringForVideoQuery = "";
 
 const initialState = {
     selectedVideo: ""
@@ -23,7 +23,7 @@ const KidsVideo = ({ videos: { videos, loading }, auth: { auth, isAuthenticated,
     useEffect(() => {
         kidsModeOn();
         // load first video with the filter applied
-        let stringForVideoQuery = null;
+        
         if (profile) {
             console.log('Lang', profile.filterLang);
             const paramsForQuery = []
@@ -39,7 +39,8 @@ const KidsVideo = ({ videos: { videos, loading }, auth: { auth, isAuthenticated,
         getVideos(stringForVideoQuery);
         setSelectedVideo(videos[0]);
         console.log("selectedVideo: ", selectedVideo);
-    }, [loading]);
+        console.log('stringForVideoQuery: ', stringForVideoQuery)
+    }, [loading], videos);
 
     const onVideoSelect = (video) => {
         console.log('From the App!', video);
@@ -54,15 +55,25 @@ const KidsVideo = ({ videos: { videos, loading }, auth: { auth, isAuthenticated,
             </section>
         )
     }
-
+    const loadNewVideos = () => {
+        getVideos(stringForVideoQuery);
+        setSelectedVideo(videos[0]);
+        console.log("selectedVideo: ", selectedVideo);
+        console.log('stringForVideoQuery: ', stringForVideoQuery)
+    }
     return (
         <div>
-            <Container>
+            <Container className="m-2">
                 <VideoDetail video={selectedVideo} />
             </Container>
+            <button className="p-3 center btn btn-light" onClick={loadNewVideos}>
+                Next Video
+            </button>
+            {/*    
             <Container>
                 <VideoList className="" onVideoSelect={onVideoSelect} videos={videos} />
             </Container>
+            */}
         </div>
     )
 }

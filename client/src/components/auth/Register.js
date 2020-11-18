@@ -34,7 +34,7 @@ const Register = ({ setAlert, register,isAuthenticated }) => {    // props come 
 
     return (
         <Fragment>
-            <h1 className="large text-primary">Sign Up</h1>
+            <h1 className="p-3 large text-primary">Register</h1>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <input type="text" placeholder="Name"
@@ -66,9 +66,12 @@ const Register = ({ setAlert, register,isAuthenticated }) => {    // props come 
                         minLength='6'  // must be same value like in server side checking
                         required />
                 </div >
-                <input type="submit" className="ui primary button" value='Register' />
+                <input type="submit" className="btn btn-light" value='Register' />
+                <br></br>
+                <br></br>
+                Already have an account? <Link to="/login" className="my-1" id="login-button" >Login</Link>
             </form>
-            Already have an account? <Link to="/login" className="my-1" id="login-button" >Sign in</Link>
+            
 
         </Fragment >
     )
