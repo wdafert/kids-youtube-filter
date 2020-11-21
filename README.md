@@ -23,10 +23,11 @@ parents can set up appropriate filters that limit content their kids will see.
 ### Deployed Version
 
 [Heroku Deploy](https://kids-youtube-filter.herokuapp.com)
+command to deploy: git push heroku master
 
 ### Instructions
 Use any email and password to create a new user
-Choose Reviewer in settings to be able to also add new videos
+Choose reviewer in settings to be able to test the whole system and also add new videos
 
 ### Local install - Available Scripts
 
