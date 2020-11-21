@@ -35,12 +35,14 @@ const KidsVideo = ({ videos: { videos, loading }, auth: { auth, isAuthenticated,
         } else {
             stringForVideoQuery = '';  // get all videos in case there is no profile
         }
-
+        console.log('stringForVideoQuery: ', stringForVideoQuery)
         getVideos(stringForVideoQuery);
+        setSelectedVideo(videos[0]);        
+        console.log("videos:", videos)
         setSelectedVideo(videos[0]);
         console.log("selectedVideo: ", selectedVideo);
-        console.log('stringForVideoQuery: ', stringForVideoQuery)
-    }, [loading], videos);
+        
+    }, [loading], videos, selectedVideo);
 
     const onVideoSelect = (video) => {
         console.log('From the App!', video);
@@ -58,8 +60,8 @@ const KidsVideo = ({ videos: { videos, loading }, auth: { auth, isAuthenticated,
     const loadNewVideos = () => {
         getVideos(stringForVideoQuery);
         setSelectedVideo(videos[0]);
-        console.log("selectedVideo: ", selectedVideo);
-        console.log('stringForVideoQuery: ', stringForVideoQuery)
+        console.log("selectedVideo LOADNEWVID: ", selectedVideo);
+        console.log('stringForVideoQuery LOADNEWVID: ', stringForVideoQuery)
     }
     return (
         <div>

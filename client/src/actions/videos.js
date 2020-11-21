@@ -4,7 +4,6 @@ import { setAlert } from './alert'
 import {
     GET_VIDEOS,
     VIDEO_ERROR
-
 } from './types'
 
 

@@ -56,7 +56,7 @@ const CreateProfile = ({ profile: { profile, loading }, kidsModeOff, createProfi
     return (
         <Fragment>
             <h1 className="large text-primary">
-                Create Your Youtube Kids PLUS Profile
+                Create your KidsTube Profile
       </h1>
             <p className="lead">
                 <i className="fas fa-user"></i> Below are the filters you can set to make sure your kid only sees what you allow
@@ -71,16 +71,12 @@ const CreateProfile = ({ profile: { profile, loading }, kidsModeOff, createProfi
                         <option value="Silver Plan">Silver Plan</option>
                         <option value="GoldPlan">GoldPlan</option>
                     </select>
-                    <small className="form-text"
-                    >Only used for development purpose</small
-                    >
+                    <small className="form-text"><em>Only used for development purpose!</em></small>
                 </div>
                 <div className="form-group">
                     <input type="text" placeholder="Child Age" name="childAge"
                         value={childAge} onChange={e => onChange(e)} />
-                    <small className="form-text"
-                    >Age of your Child</small
-                    >
+                    <small className="form-text">Age of your Child</small>
                 </div>
                 <div className="form-group">
                     <input type="text" name="filterAge"

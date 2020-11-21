@@ -19,7 +19,7 @@ const Landing = ({ isAuthenticated }) => {
                         - language<br />
                         - no violence <br />
                         - no unboxing, or other unwanted ads ...
-          </p>
+                    </p>
                     <div className="buttons">
                         <a href='#!' className="btn m-2 btn-light">
                             <Link to="/register" id="login-button" >

@@ -34,6 +34,13 @@ const Register = ({ setAlert, register,isAuthenticated }) => {    // props come 
 
     return (
         <Fragment>
+            <h2 className="large">Claim back control of what your kids watch. </h2>
+            <p className="lead">
+                100% human reviewed Kids Videos with filters for <br />
+                        - language<br />
+                        - violence <br />
+                        - unboxing, or other unwanted ads ...
+                    </p>
             <h1 className="p-3 large text-primary">Register</h1>
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
