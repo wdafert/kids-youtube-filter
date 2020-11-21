@@ -17,7 +17,7 @@ parents can set up appropriate filters that limit content their kids will see.
 
 ### Screenshots
 
-![KidsTube-5](https://user-images.githubusercontent.com/42965956/99867669-5dc3e300-2bf6-11eb-991b-c2ce582524bd.gif)
+![KidsTube-6](https://user-images.githubusercontent.com/42965956/99867767-64068f00-2bf7-11eb-92f2-4ef094249671.gif)
 
 ### Tools used
 - User registration and authorization with JWT.
