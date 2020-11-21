@@ -39,3 +39,6 @@ In the project directory, you can run:
 `npm run dev`
 
 This will run both the client app and the server app in development mode with nodemon.<br>
+
+### more projects and how to contact me...
+[Wolfgang Dafert](https://wolfgangdafert.com)
