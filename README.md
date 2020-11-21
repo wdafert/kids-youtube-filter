@@ -15,6 +15,10 @@ parents can set up appropriate filters that limit content their kids will see.
 2. The reviewer will make a categorization of content by language and other factors
 3. Parents simply set up their filter one time and from then on kids can only see selected videos
 
+### Screenshots
+
+[KidsTube](https://user-images.githubusercontent.com/42965956/99866345-90b4a980-2beb-11eb-9590-13302cc0ad66.gif)
+
 ### Tools used
 - User registration and authorization with JWT.
 - Mongo Atlas Database that stores users and each categorized video information
