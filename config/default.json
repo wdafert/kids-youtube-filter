@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://wolf_baer:BhpURq3taZnf5j4@cluster0.snp1a.mongodb.net/kidsvideos?retryWrites=true&w=majority",
-    "jwtSecret": "ils2009c"
+    "mongoURI": "mongodb+srv://xxx:xxx@cluster0.snp1a.mongodb.net/kidsvideos?retryWrites=true&w=majority",
+    "jwtSecret": "xxx"
 }
